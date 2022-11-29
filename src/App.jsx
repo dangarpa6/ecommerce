@@ -11,8 +11,11 @@ import Loader from './components/shared/Loader'
 
 
 
+
 import { useSelector } from 'react-redux'
 import isLoadingSlice from './store/slices/isLoading.slice'
+import ProtectedRoutes from './components/shared/ProtectedRoutes'
+import { Container } from 'react-bootstrap'
 
 function App() {
 
@@ -22,12 +25,16 @@ function App() {
     <div className='app'>
       <Header/>
       {isLoading && <Loader/>}
+      <Container className='my-5'>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/purchases' element={<Purchases />} />
         <Route path='/products/:id' element={<ProductDetail />} />
+        <Route element={<ProtectedRoutes />}>
+            <Route path="/purchases" element={<Purchases />} />
+          </Route>
       </Routes>
+      </Container>
     </div>
   )
 }
