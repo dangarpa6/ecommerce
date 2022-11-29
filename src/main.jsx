@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import App from './App'
 import './index.css'
-import 'bootswatch/dist/pulse/bootstrap.min.css';
+import 'bootswatch/dist/cosmo/bootstrap.min.css';
 import { Provider } from 'react-redux'
 import store1 from './store'
 

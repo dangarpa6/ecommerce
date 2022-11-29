@@ -19,14 +19,14 @@ const Header = () => {
         </ul>
   </nav>*/}
       <Navbar bg="primary" expand="lg">
-      <Container>
-        <Navbar.Brand as={NavLink} to='/'>E-commerce</Navbar.Brand>
+      <Container >
+        <Navbar.Brand as={NavLink} to='/' style={{color:'white'}}>E-commerce</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={NavLink} to='/login'>Login</Nav.Link>
-            <Nav.Link as={NavLink} to='/purchases'>Purchases</Nav.Link>
-            <Nav.Link >Cart</Nav.Link>
+            <Nav.Link as={NavLink} to='/login' style={{color:'white'}}>Login</Nav.Link>
+            <Nav.Link as={NavLink} to='/purchases' style={{color:'white'}}>Purchases</Nav.Link>
+            <Nav.Link  style={{color:'white'}}>Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
