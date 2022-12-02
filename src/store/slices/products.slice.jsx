@@ -42,6 +42,8 @@ export const filtredTitle = (inputSearch) => dispatch => {
 
 
 
+
+
 export const {setProducts} = productsSlice.actions;
 
 export default productsSlice.reducer

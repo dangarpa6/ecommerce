@@ -39,12 +39,6 @@ const Home = () => {
               ))
             }
 
-
-
-
-
-
-
           </ListGroup>
 
 
@@ -88,6 +82,7 @@ const Home = () => {
                       <Card.Body>
                         <Card.Title>{product.title}</Card.Title>
                         <Card.Text>
+                          <h4>Price:</h4>
                          <h4>{product.price} </h4>
                         </Card.Text>
                       </Card.Body>

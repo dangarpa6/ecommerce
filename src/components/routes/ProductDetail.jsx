@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Carousel, Col, ListGroup, Row } from 'react-bootstrap';
+import { Button, Carousel, Col, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom'
+import { createProductThunk } from '../../store/slices/cart.slice';
 import { getAllProducts } from '../../store/slices/products.slice';
 
 const ProductDetail = () => {
@@ -20,12 +21,30 @@ const ProductDetail = () => {
 
   const productsFound = producstLists.find(product => product.id === Number(id))
   const relatedProducts = producstLists.filter(product =>
-    product.category.id === productsFound.category.id &&
+    product.category.id === productsFound?.category.id &&
     product.id !== productsFound.id
 
   )
 
-  console.log(relatedProducts)
+  const [quantity, setQuantity] = useState('');
+
+  const addCart = () => {
+    const productToCart = {
+      id: productsFound.id,
+      quantity: quantity
+
+    }
+
+    console.log(productToCart)
+    dispatch(createProductThunk(productToCart))
+  }
+
+
+  // const addProducts = () =>{
+  // const product = {
+  // product: productsFound.id
+  // }
+  //}
 
 
   return (
@@ -35,52 +54,56 @@ const ProductDetail = () => {
         <Col lg={9}>
 
 
-        <Carousel>
-      <Carousel.Item>
-        <img src={productsFound?.productImgs[0]} alt=""
+          <Carousel>
+            <Carousel.Item>
+              <img src={productsFound?.productImgs[0]} alt=""
+                className="pic"
+              />
+            
+              
+              <Carousel.Caption>
+                
+                <h3></h3>
+                <p></p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img src={productsFound?.productImgs[1]} alt=""
+                
+                className="pic"
+              />
 
-          className="img-fluid"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-      <img src={productsFound?.productImgs[1]} alt=""
+              <Carousel.Caption>
+                <h3></h3>
+                <p></p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img src={productsFound?.productImgs[2]} alt=""
 
-          className="img-fluid"
-        />
+                className="pic"
+              />
 
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-      <img src={productsFound?.productImgs[2]} alt=""
+              <Carousel.Caption>
+                <h3></h3>
+                <p>
+                 
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+          <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+          <Button onClick={addCart}>Buy</Button>
 
-          className="img-fluid"
-        />
+          <h1>{productsFound?.price}</h1>
+          {productsFound?.description}
 
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-
-    <h1>{productsFound?.price}</h1>
-    {productsFound?.description}
-    
 
         </Col>
 
 
 
-        
+
         <Col lg={3}>
 
 
@@ -89,11 +112,11 @@ const ProductDetail = () => {
             {relatedProducts.map(product => (
               <ListGroup.Item>
                 <Link
-                
+
                   to={`/products/${product.id}`}>
 
-                  
-                  <img src={product.productImgs[0]} alt="" className="img-fluid" />
+
+                  <img src={product.productImgs[0]} alt="" className="img-fluid" style={{ height: 200 }} />
                   {product.title}
                 </Link>
               </ListGroup.Item>

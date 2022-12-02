@@ -85,4 +85,83 @@ font-family: 'Lato', sans-serif;
   gap: 2em;
   list-style: none;
 }
+
+.box{
+  width: 300px;
+
+}
+
+.box h1{
+  color: #fff;
+  background-color: #03a9f4;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.box ul{
+  position: relative;
+  background: #fff;
+
+}
+
+.box ul li {
+  list-style: none;
+  padding: 10px;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 5px 25px rgb(99, 98, 98);
+}
+
+.box ul li :hover{
+transform: scale(1.1);
+z-index: 100;
+background: #25bcff;
+box-shadow: 0 5px 25px rgb(80, 80, 80);
+color: #fff;
+}
+
+.box ul li span{
+
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background: #25bcff;
+  color: #fff;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  transform: translateY(-20px);
+}
+
+.box ul li:hover span{
+  background: #fff;
+  color: #25bcff;
+}
+
+
+
+
+
+
 */}
+
+.pic{
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: contain ;
+}
+
+.i{
+ height: 20px;
+ width: 20px;
+}
+
+.buy{
+  
+}

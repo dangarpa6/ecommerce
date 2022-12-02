@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Offcanvas } from 'react-bootstrap';
+import Cart from './Cart';
+
+
+
 
 const Header = () => {
+
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   return (
-    <header className='header'>
-    { /*  <NavLink to='/'>
-        <h1 className='header__logo'>e-commerce</h1>
-      </NavLink> {/*Diferencia NavLink con link es que se le puede pasar funcion callback*
-     <nav className="header__nav">
-        <ul className="header__list">
-          <li className="header__item"><NavLink  className={({isActive})=> isActive ? 'active-link': ''} to='/login' >Login</NavLink></li>
-          <li className="header__item"><NavLink  className={({isActive})=> isActive ? 'active-link': ''} to='/purchases' >Purchases</NavLink></li>
-          <li className="header__item"><h2 className='header__link'>Cart</h2> </li>
-        </ul>
-  </nav>*/}
+    <>
       <Navbar bg="primary" expand="lg">
       <Container >
         <Navbar.Brand as={NavLink} to='/' style={{color:'white'}}>E-commerce</Navbar.Brand>
@@ -26,12 +29,14 @@ const Header = () => {
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to='/login' style={{color:'white'}}>Login</Nav.Link>
             <Nav.Link as={NavLink} to='/purchases' style={{color:'white'}}>Purchases</Nav.Link>
-            <Nav.Link  style={{color:'white'}}>Cart</Nav.Link>
+            <Nav.Link onClick={handleShow} style={{color:'white'}}>Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    </header>
+<Cart show={show} handleClose={handleClose}/>
+      </>
+  
   )
 }
 

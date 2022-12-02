@@ -14,19 +14,16 @@ const{register,handleSubmit} = useForm();
 const navigate = useNavigate();
 
 const submit = (data) => {
-  alert('hola mundo' + data)
-  console.log(data);
-  axios.post("https://e-commerce-api.academlo.tech/api/v1/users/login/", data)
+  axios.post("https://e-commerce-api.academlo.tech/api/v1/users/login", data)
       .then(res =>{ 
         navigate('/');
-      console.log(res);
       localStorage.setItem('token',res.data.data.token)
       }
       
         )
       .catch(err => {
           if (err.response?.status === 404) {
-              alert('esta mal la contrasenia')
+              alert('Invalid credentials')
           } else {
               console.log(err.respose?.data);
           }
